@@ -5,9 +5,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -18,16 +15,33 @@ firebase.initializeApp({
 })
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        
+        <section>
+          <SignIn/>
+        </section>
       </header>
     </div>
   );
+}
+
+function SignIn() {
+
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+
+  return (
+    <>
+      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+    </>
+  )
+
 }
 
 export default App;
