@@ -20,11 +20,18 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <section>
+      <div className='head'>      {/*section seen when loggen in */}
+      <span> Imperio 	&#9889; </span>
+          <SignOut/>
+       
+      </div>
+      <div className='main'>
+
+        <section className='signInSection'>
           <SignIn/>
         </section>
-      </header>
+
+        </div>
     </div>
   );
 }
@@ -38,10 +45,19 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <button className="signInButton" onClick={signInWithGoogle}>Sign in with Google</button>
     </>
   )
 
 }
+function SignOut() {
 
+
+  return (
+    <>
+      <button className="signOutButton" >Sign out</button>
+    </>
+  )
+
+}
 export default App;

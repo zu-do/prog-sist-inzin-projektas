@@ -1,5 +1,44 @@
+/* utilities */
+.bolt {
+  border: 4px solid rgba(0,0,0,0);
+  border-bottom: 22px solid #ffdf00;
+  transform: rotateZ(-160deg);
+  padding: 2px;
+  width: 0;
+  height: 0;
+  margin: 0;
+  overflow: visible;
+  border-top: 0 solid;
+  border-radius: 0;
+  transform-origin: 50% 50% 0;
+}
+
+.bolt:after {
+  content: "";
+  top: -9px;
+  left: -8px;
+  border: 5px solid rgba(0,0,0,0);
+  border-bottom: 25px solid #ffdf00;
+  transform: rotateZ(4deg);
+  padding: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin: 0;
+  overflow: visible;
+  border-top: 0 solid;
+  border-radius: 0;
+  transform-origin: 50% 50% 0;
+}
+
+
+
+
+
 .App {
-  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+ 
 }
 
 .App-logo {
@@ -14,18 +53,47 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.signOutButton{
+  float: right;
+}
+.signInButton{
+  
+}
+.head{
+  height: 2rem;
+  background-color: azure;
+  padding: 0.5rem;
+  /* display: none; */  /* before logging in display none -  after display flex or smth*/  
+}
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 3.5rem);
+
+}
+
+.signInSection{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 60%;
+  -webkit-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 3rem;
+  margin: 3rem;
+  background-color: #213644;
+  border-radius: 5px;
+  opacity: 1;
+
 }
 
 @keyframes App-logo-spin {
