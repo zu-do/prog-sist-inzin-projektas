@@ -71,8 +71,36 @@
   font-size: 16px;
 }
 .signInButton{
+  align-items: center;
+  background-image: linear-gradient(144deg,#dcff40, #f3a042 50%,#eb0000);
+  border: 5;
+  border-radius: 10px;
+  box-shadow: rgba(177, 46, 13, 0.904) 0 5px 20px -5px;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration:wavy;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 600
   
 }
+.signInButton:active,
+.signInButton:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
 .head{
   height: 2rem;
   background-color: azure;
@@ -91,14 +119,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25%;
-  height: 60%;
+  width: 20%;
+  height: 30%;
   -webkit-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
   -moz-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
-  box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 3rem;
-  margin: 3rem;
+  box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 1rem;
+  margin: 10rem;
   background-color: #213644;
-  border-radius: 5px;
+  border-radius: 80px;
   opacity: 1;
 
 }
