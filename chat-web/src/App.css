@@ -105,6 +105,7 @@
   height: 2rem;
   background-color: azure;
   padding: 0.5rem;
+  /* display: none; */
   /* display: none; */  /* before logging in display none -  after display flex or smth*/  
 }
 .main{
