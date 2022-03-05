@@ -20,9 +20,6 @@ const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
 
-// const auth = firebase.auth();
-// const au2 = getAuth();
-// const user = au2.currentUser;
 
 function App() {
 
@@ -107,11 +104,7 @@ function SignOut() {
 
   return (
     <>
-      <button className="signOutButton" onClick={()=>{signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});}} >Sign out</button>
+      <button className="signOutButton" >Sign out</button>
     </>
   )
 
