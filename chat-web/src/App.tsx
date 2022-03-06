@@ -104,7 +104,11 @@ function SignOut() {
 
   return (
     <>
-      <button className="signOutButton" >Sign out</button>
+      <button className="signOutButton" onClick={()=>{signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});}} >Sign out</button>
     </>
   )
 
