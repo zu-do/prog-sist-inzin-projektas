@@ -58,13 +58,31 @@ setInterval(Check, 1000)
       
    <MainHeader/>
 
+   <header>
+        <h2><a href="#" className="logo">Logo</a></h2>
+        <div className="navigation">
+        </div>
+      </header>
+
     <div className='main'>
 
-    <section className='signInSection' id='signInSection'>
-      <SignIn/>
-    </section>
+    <div className="content">
+        <div className="info">
+          <h2><span>Chat Web brings the team together wherever you are</span></h2>
+          <p>Where just you and a handful of friends can spend time together. A place that makes
+            it easy to talk every day and hang out more often.
+          </p>
+         
+        </div> 
+       
+      </div>
+ <section className='signInSection' id='signInSection'>     
+          <SignIn/>
+          </section>
+    
 
     </div>
+    
     </div>
   );
 }

@@ -36,7 +36,7 @@
 
 
 .App {
-  background-color: #282c34;
+  background-color: #244254;
   min-height: 100vh;
  
 }
@@ -84,7 +84,7 @@
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
-  min-width: 140px;
+  min-width: 200px;
   padding: 19px 24px;
   text-decoration:wavy;
   user-select: none;
@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 3.5rem);
+  padding: 20px 20px;
 
 }
 
@@ -126,7 +126,7 @@
   -moz-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
   box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 1rem;
   margin: 10rem;
-  background-color: #213644;
+  background-color: #244254;
   border-radius: 80px;
   opacity: 1;
 
@@ -140,3 +140,51 @@
     transform: rotate(360deg);
   }
 }
+
+.content{
+  max-width: 650px;
+  max-height: 650px;
+  margin: 60px 60px;
+}
+
+
+  .content .info h2{
+    font-size: 35px;
+    line-height: 40px;
+  }
+
+  .content .info h2 span{
+    font-size: 40px;
+    font-weight: 800;
+    color: #C7D0D8;
+  }
+
+  .content .info p{
+    font-size: 20px;
+    font-weight: 500;
+    color: #C7D0D8;
+  }
+
+  header{
+    position: relative;
+    top: 0;
+   
+    padding: 30px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C7D0D8;
+  }
+
+  header .logo{
+    position: relative;
+    color: #000;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+   
+  }
+  
+ 
