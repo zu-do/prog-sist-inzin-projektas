@@ -112,7 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 20px;
+  height: calc(100vh - 3.5rem)
 
 }
 
@@ -255,6 +255,7 @@ input {
   max-width: 650px;
   max-height: 650px;
   margin: 60px 60px;
+  
 }
 
 
