@@ -46,8 +46,28 @@ function MainHeader(){
     <div className='head' id = 'head' >      {/*section seen when loggen in */}
     <span> Imperio 	&#9889; </span>
         <SignOut/>
-     
+        <div className='container'>
+  <div className="chatbox">
+    <div className="top-bar">
+      <div className="avatar"></div>
+      <div className="name">UserName</div>
+      <div className="icons">
+      </div>
+      <div className="menu">
+        <div className="dots"></div>
+      </div>
+    </div>
+    <div className="middle">
+    </div>
+    <div className="bottom-bar">
+      <div className="chat">
+        <input type="text" placeholder="Type a message..." />
+        <button className="send" type="submit">Send</button>
+      </div>
     </div> 
+    </div>
+    </div>
+    </div>
   )
 }
 
@@ -131,4 +151,6 @@ function SignOut() {
   )
 
 }
+
+
 export default App;
