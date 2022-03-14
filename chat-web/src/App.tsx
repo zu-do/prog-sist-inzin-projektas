@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-
+import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import { isContentEditable } from '@testing-library/user-event/dist/utils';
+import ExitPage from './components/ExitPage';
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -63,6 +63,7 @@ function MainHeader(){
   return (
     
     <div className='head' id = 'head' >      {/*section seen when loggen in */}
+    {/* <Link to="/"></Link> */}
     <span> Imperio 	&#9889; </span>
         <SignOut/>
         <div className='container'>
@@ -147,11 +148,12 @@ function SignOut() {
 
   return (
     <>
-      <button className="signOutButton" onClick={()=>{signOut(auth).then(() => {
+      <Link to="exit"><button className="signOutButton" onClick={()=>{signOut(auth).then(() => { 
+        
   // Sign-out successful.
 }).catch((error) => {
   // An error happened.
-});}} >Sign out</button>
+});}} >Sign out</button></Link>
     </>
   )
 

@@ -1,0 +1,30 @@
+.ExitPage {
+    background-color: #282c34;
+    min-height: 100vh;
+   
+}
+
+.ExitMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 3.5rem);
+}
+
+.Message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    font-family: "JetBrains Mono",monospace;
+    font-size: 22px;
+    height: 30%;
+    background-color: #194969;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: #7373af;
+    box-sizing: border-box;
+    opacity: 1;
+    text-align: center;
+    color: #999ed3;
+  }
