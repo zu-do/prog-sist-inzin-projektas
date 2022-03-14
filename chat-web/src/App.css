@@ -13,6 +13,23 @@
   border-radius: 0;
   transform-origin: 50% 50% 0;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: inline;
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+li:hover{
+  color:#244254;
+  background-color: #1e293b;
+}
 
 .bolt:after {
   content: "";
@@ -31,19 +48,13 @@
   border-radius: 0;
   transform-origin: 50% 50% 0;
 }
-
-
-
-
-
 .App {
   background-color: #244254;
   min-height: 100vh;
- 
 }
-
 .App-logo {
-  height: 40vmin;
+  float:left;
+  height: 30px;
   pointer-events: none;
 }
 
@@ -297,6 +308,11 @@ input {
     font-weight: 800;
     letter-spacing: 1px;
    
+  }
+  .img{
+    float:left;
+    width:42px;
+    height:40px
   }
   
  
