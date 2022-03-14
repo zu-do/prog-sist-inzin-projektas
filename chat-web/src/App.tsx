@@ -6,6 +6,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import { isContentEditable } from '@testing-library/user-event/dist/utils';
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -26,17 +27,35 @@ function App() {
   function Check (){
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
-    if (head !== null && siSec !== null){
+    const content = document.getElementById('content');
+    if (head !== null && siSec !== null && content !==null){
       if (auth.currentUser === null){
           head.style.display='none'
           siSec.style.display='flex'
+          content.style.display='flex'
       }
       else {
         head.style.display='block'
         siSec.style.display='none'
+        content.style.display='none'
       }
     }
 
+  }
+
+  function Content()
+  {
+    return(
+      <div className='content' id = 'content'>
+      <div className='info'>
+        <h2><span>Chat Web brings the team together wherever you are</span></h2>
+        <p>Where just you and a handful of friends can spend time together. A place that makes
+          it easy to talk every day and hang out more often.
+        </p>
+       
+      </div>        
+    </div>
+    )
   }
 
 function MainHeader(){
@@ -79,15 +98,19 @@ setInterval(Check, 1000)
    <MainHeader/>
 
     <div className='main'>
+      <Content/>
 
-    <section className='signInSection' id='signInSection'>
-      <SignIn/>
-    </section>
+ <section className='signInSection' id='signInSection'>     
+          <SignIn/>
+          </section>
+    
 
     </div>
+    
     </div>
   );
 }
+
 
 function SignIn() {
 
