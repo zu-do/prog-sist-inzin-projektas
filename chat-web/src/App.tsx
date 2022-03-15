@@ -7,6 +7,7 @@ import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import ExitPage from './components/ExitPage';
+import logo from "./ChatWeb.png";
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -20,7 +21,7 @@ firebase.initializeApp({
 const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
-
+declare module "*.png";
 
 function App() {
 
@@ -64,9 +65,16 @@ function MainHeader(){
     
     <div className='head' id = 'head' >      {/*section seen when loggen in */}
     {/* <Link to="/"></Link> */}
-    <span> Imperio 	&#9889; </span>
-        <SignOut/>
+    <ul>
+      <span><img className='App-logo' src={logo} alt="logo"/></span>
+      <li>  Imperio 	&#9889;</li>
+      <li className='navbar'> My account </li>
+      <li className='navbar'> Messages </li>
+      <li className='navbar'> Friends </li>
+    </ul>
+        <SignOut/> 
         <div className='container'>
+       
   <div className="chatbox">
     <div className="top-bar">
       <div className="avatar"></div>
