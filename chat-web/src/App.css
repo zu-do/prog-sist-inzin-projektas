@@ -121,11 +121,9 @@ li:hover{
   /* display: none; */  /* before logging in display none -  after display flex or smth*/  
 }
 .main{
-  display: flex;
   align-items: center;
   justify-content: center;
   height: calc(100vh - 3.5rem)
-
 }
 
 .signInSection{
@@ -141,54 +139,49 @@ li:hover{
   background-color: #244254;
   border-radius: 80px;
   opacity: 1;
-
+}
+#ChatviewContainer{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .container {
-  position: absolute;
-  right: 450px;
-  top: -50px;
-  margin: 12% auto;
-  width: 850px;
-  height: 550px;
+  width: 40%;
+  height: 50%;
 }
 .chatbox {
-  position: absolute; 
-  left: 35%;
-  height: 75%;
-  width: 60%;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba(#777777, 0.5);
 }
 .top-bar {
-  width: 100%;
-  height: 60px;
-  background:  #F9FBFF;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background:  #eff1f7;
   border-radius: 10px 10px 0 0;
 }
 .avatar {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
+  
   background: linear-gradient(to bottom left, #79C7C5 20%, #A1E2D9 100%);
   border-radius: 50%;
-  position: absolute;
-  top: 11px;
-  left: 15px;
 }
 .name {
-  position: absolute;
-  top: 22px;
+  width: 88%;
+  padding-left: 1rem;
   text-transform: uppercase;
   color: #777777;
   font-size: .8em;
   letter-spacing: 2px;
   font-weight: 500;
-  left: 60px;
 }
-
 .menu {
-  position: absolute;
   right: 10px;
-  top: 20px;
   width: 10px;
   height: 20px;
   cursor: pointer;
@@ -198,7 +191,6 @@ li:hover{
     transition: all .3s ease-in;
   }
 .icons {
-  position: absolute;
   color: #A1E2D9;
   padding: 10px;
   top: 5px;
@@ -206,47 +198,41 @@ li:hover{
   cursor: pointer;
 }
 .dots {
-  width: 4px;
+  width: 5px;
   height: 4px;
   border-radius: 50%;
   background-color: #79C7C5;
   box-shadow: 0px 7px 0px #79C7C5, 0px 14px 0px #79C7C5;
 }
 .middle {
-  position: absolute;
   background:  #F9FBFF;
   width: 100%;
   opacity: 0.85;
-  top: 60px;
   height: 80%;
 }
 .bottom-bar {
-  position: absolute;
   width: 100%;
   height: 55px;
-  bottom: 0;
   background:  #F9FBFF;
   border-radius: 0 0 10px 10px;
 }
 input {
   padding: 7px;
-  width: 74%;
+  width: 88%;
   left: 5%;
-  position: absolute;
   border: 0;
   top: 13px;
   background: #F9FBFF;
   color: #79C7C5;
 }
 .send {
-  position: absolute;
   border: 0;
   font-size: 1em;
   color: darkcyan;
-  top:  19px;
   opacity: 0.8;
   right: 17px;
   cursor: pointer;
+  background: #F9FBFF;
   outline: 0;}
 .send:hover {
     transform: scale(1.1);
