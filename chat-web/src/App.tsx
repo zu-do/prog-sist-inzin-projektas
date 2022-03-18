@@ -29,16 +29,19 @@ function App() {
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
     const content = document.getElementById('content');
-    if (head !== null && siSec !== null && content !==null){
+    const chatview = document.getElementById('ChatviewContainer');
+    if (head !== null && siSec !== null && content !==null && chatview !==null){
       if (auth.currentUser === null){
           head.style.display='none'
           siSec.style.display='flex'
           content.style.display='flex'
+          chatview.style.display='none'
       }
       else {
         head.style.display='block'
         siSec.style.display='none'
         content.style.display='none'
+        chatview.style.display='flex'
       }
     }
 
@@ -65,37 +68,16 @@ function MainHeader(){
     
     <div className='head' id = 'head' >      {/*section seen when loggen in */}
     {/* <Link to="/"></Link> */}
-    <ul>
-      <span><img className='App-logo' src={logo} alt="logo"/></span>
-      <li>  Imperio 	&#9889;</li>
-      <li className='navbar'> My account </li>
-      <li className='navbar'> Messages </li>
-      <li className='navbar'> Friends </li>
-    </ul>
+          <ul>
+            <span><img className='App-logo' src={logo} alt="logo"/></span>
+            <li>  Imperio 	&#9889;</li>
+            <li className='navbar'> My account </li>
+            <li className='navbar'> Messages </li>
+            <li className='navbar'> Friends </li>
+          </ul>
         <SignOut/> 
-        <div className='container'>
-       
-  <div className="chatbox">
-    <div className="top-bar">
-      <div className="avatar"></div>
-      <div className="name">UserName</div>
-      <div className="icons">
       </div>
-      <div className="menu">
-        <div className="dots"></div>
-      </div>
-    </div>
-    <div className="middle">
-    </div>
-    <div className="bottom-bar">
-      <div className="chat">
-        <input type="text" placeholder="Type a message..." />
-        <button className="send" type="submit">Send</button>
-      </div>
-    </div> 
-    </div>
-    </div>
-    </div>
+        
   )
 }
 
@@ -113,13 +95,37 @@ setInterval(Check, 1000)
           <SignIn/>
           </section>
     
-
+          <Chatview/>
     </div>
     
     </div>
   );
 }
 
+function Chatview(){
+  return (
+    <div id='ChatviewContainer'>
+      <div className='container'>  
+        <div className="chatbox">
+          <div className="top-bar">
+            <div className="avatar"></div>
+            <div className="name">UserName</div>
+            <div className="menu"> 
+              <div className="dots"></div>
+            </div>
+          </div>
+          <div className="middle"></div>
+          <div className="bottom-bar">
+            <div className="chat">
+              <input type="text" placeholder="Type a message..." />
+              <button className="send" type="submit">Send</button>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function SignIn() {
 
