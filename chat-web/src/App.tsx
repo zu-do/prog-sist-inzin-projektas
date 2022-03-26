@@ -9,6 +9,11 @@ import { GoogleAuthProvider } from "firebase/auth";
 import ExitPage from './components/ExitPage';
 import logo from "./ChatWeb.png";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { info, timeStamp } from 'console';
+import {setDoc, doc, getFirestore, Timestamp, getDoc, collection } from 'firebase/firestore'
+
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -22,6 +27,8 @@ firebase.initializeApp({
 const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
+const db = getFirestore();
+var displayname = '';
 declare module "*.png";
 
 function App() {
@@ -30,20 +37,26 @@ function App() {
   function Check (){
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
+    const siSec2 = document.getElementById('signInSection2'); 
+    const siSec3 = document.getElementById('signInSection3'); 
     const content = document.getElementById('content');
     const chatview = document.getElementById('ChatviewContainer');
-    if (head !== null && siSec !== null && content !==null && chatview !==null){
+    if (head !== null && siSec !== null && content !==null && chatview !==null && siSec2 != null && siSec3 != null){
       if (auth.currentUser === null){
           head.style.display='none'
           siSec.style.display='flex'
           content.style.display='flex'
           chatview.style.display='none'
+          siSec2.style.display= 'flex'
+          siSec3.style.display= 'flex'
       }
       else {
         head.style.display='block'
         siSec.style.display='none'
         content.style.display='none'
         chatview.style.display='flex'
+        siSec2.style.display= 'none'
+        siSec3.style.display= 'none'
       }
     }
 
@@ -85,6 +98,61 @@ function MainHeader(){
 
 
 setInterval(Check, 1000)
+// Registration methods ------------------------------------------------------
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    error: '',
+    loading: false,
+  });
+  const {name, email, password, error, loading} = data;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData({...data, [e.target.name]: e.target.value})
+    displayname = name;
+  }
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setData({ ...data, error: '', loading: true});
+    if (!name || !email || !password) {
+      setData({ ...data, error: "All fields are required" });
+    }
+    try{
+        const result = await  createUserWithEmailAndPassword(auth, email, password)
+        await setDoc(doc(db, "users", result.user.uid), {
+          uid: result.user.uid,
+          name,
+          email,
+          createdAt: Timestamp.fromDate(new Date()),
+        });
+    }catch(err){
+      setData({ ...data, error: "Bad crediantials" });
+    }
+  }
+// Login methods ------------------------------------------------------
+  const [data2, setData2] = useState({ //Login crediantials
+    email2: '',
+    password2: '',
+    error2: '',
+    loading2: false,
+  });
+  const { email2, password2, error2, loading2 } = data2; // creates data2 
+
+  const handleChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData2({ ...data2, [e.target.name]: e.target.value });
+    displayname = email2;
+  };
+  const handleSubmit2 = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setData2({ ...data2, error2: '', loading2: true });
+    try {
+      const result2 = await signInWithEmailAndPassword(auth, email2, password2);
+  
+    } catch (err) {
+      setData2({ ...data2, error2: 'bad credantials', loading2: false });
+    }
+  };
+
   return (
     <div className="App">
       
@@ -96,7 +164,50 @@ setInterval(Check, 1000)
  <section className='signInSection' id='signInSection'>     
           <SignIn/>
           </section>
-    
+
+
+  <section className='signInSection' id='signInSection2'>
+          <h3>Create An account</h3>
+          <form className="form" onSubmit={handleSubmit}>
+            <div className='input_container'>
+                <label htmlFor="name">Name</label>
+                <input type="text" name='name' value={name} onChange={handleChange}/>
+            </div>
+            <div className='input_container'>
+                <label htmlFor="email">Email</label>
+                <input type="text" name='email' value={email} onChange={handleChange}/>
+            </div>
+            <div className='input_container'>
+                <label htmlFor="password">Password</label>
+                <input type="password" name='password' value={password} onChange={handleChange}/>
+            </div>
+            {error}
+            <div className='btn_container'>
+                <button className='btn'>Register</button>
+            </div>
+          </form>
+          </section>
+
+
+
+  <section className='signInSection' id='signInSection3'>
+          <h3>Log into your Account</h3>
+          <form className="form" onSubmit={handleSubmit2}>
+            <div className="input_container">
+                <label htmlFor="email2">Email</label>
+                <input type="text" name='email2' value={email2} onChange={handleChange2}/>
+            </div>
+            <div className="input_container2">
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password2" value={password2} onChange={handleChange2} />
+            </div>
+        {error2}
+            <div className="btn_container">
+                <button className="btn">login</button>
+            </div>
+          </form>
+          </section>
+          
           <Chatview/>
     </div>
     
@@ -106,13 +217,14 @@ setInterval(Check, 1000)
 
 function Chatview(){
   const [user] = useAuthState(auth);
+
   return (
     <div id='ChatviewContainer'>
       <div className='container'>  
         <div className="chatbox">
           <div className="top-bar">
             <div className="avatar"></div>
-            <div className="name">{user?.displayName}</div>
+            <div className="name">{user?.displayName ? user?.displayName : displayname}</div>
             <div className="menu"> 
               <div className="dots"></div>
             </div>
@@ -137,9 +249,17 @@ function SignIn() {
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
+
    // const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+
+     setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      name: user.displayName,
+      email: user.email,
+      createdAt: Timestamp.fromDate(new Date()),
+    });
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -161,8 +281,6 @@ function SignIn() {
 
 }
 function SignOut() {
-
-
   return (
     <>
       <Link to="exit"><button className="signOutButton" onClick={()=>{signOut(auth).then(() => { 
@@ -175,6 +293,7 @@ function SignOut() {
   )
 
 }
+
 
 
 export default App;

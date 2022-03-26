@@ -140,6 +140,34 @@ li:hover{
   border-radius: 80px;
   opacity: 1;
 }
+.signInSection2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 30%;
+  -webkit-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 1rem;
+  margin: 10rem;
+  background-color: #244254;
+  border-radius: 80px;
+  opacity: 1;
+}
+.signInSection3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 30%;
+  -webkit-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);
+  box-shadow: 7px 7px 51px 7px rgba(0,0,0,0.75);  padding: 1rem;
+  margin: 10rem;
+  background-color: #244254;
+  border-radius: 80px;
+  opacity: 1;
+}
 #ChatviewContainer{
   align-items: center;
   display: flex;
