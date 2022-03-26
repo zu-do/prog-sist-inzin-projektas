@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/
 import { GoogleAuthProvider } from "firebase/auth";
 import ExitPage from './components/ExitPage';
 import logo from "./ChatWeb.png";
+import { useAuthState } from 'react-firebase-hooks/auth';
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -24,7 +25,8 @@ const auth = getAuth();
 declare module "*.png";
 
 function App() {
-
+  
+  
   function Check (){
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
@@ -103,13 +105,14 @@ setInterval(Check, 1000)
 }
 
 function Chatview(){
+  const [user] = useAuthState(auth);
   return (
     <div id='ChatviewContainer'>
       <div className='container'>  
         <div className="chatbox">
           <div className="top-bar">
             <div className="avatar"></div>
-            <div className="name">UserName</div>
+            <div className="name">{user?.displayName}</div>
             <div className="menu"> 
               <div className="dots"></div>
             </div>
