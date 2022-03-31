@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import 'firebase/auth';
 import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import ExitPage from './components/ExitPage';
 import logo from "./ChatWeb.png";
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { DocumentDataHook, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
+import { FirestoreError } from 'firebase/firestore';
+
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -22,8 +28,16 @@ const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
 declare module "*.png";
+//const auth = firebase.auth();
+const firestore = firebase.firestore();
+const analytics = firebase.analytics();
+//const db = getFirestore();
+var displayname = '';
+
 
 function App() {
+
+  const [user] = useAuthState(auth);
 
   function Check (){
     const head = document.getElementById('head'); 
@@ -101,8 +115,14 @@ setInterval(Check, 1000)
     </div>
   );
 }
-
+  
 function Chatview(){
+  
+
+
+
+  
+  
   return (
     <div id='ChatviewContainer'>
       <div className='container'>  
