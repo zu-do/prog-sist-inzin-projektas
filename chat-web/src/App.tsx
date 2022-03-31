@@ -284,7 +284,7 @@ function SignOut() {
   return (
     <>
       <Link to="exit"><button className="signOutButton" onClick={()=>{signOut(auth).then(() => { 
-        
+        alert("YOU WILL BE REDIRECTED TO OUR EXIT PAGE");
   // Sign-out successful.
 }).catch((error) => {
   // An error happened.
