@@ -6,7 +6,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import ExitPage from './components/ExitPage';
+import Footer from './components/Footer';
 import logo from "./ChatWeb.png";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -210,7 +210,7 @@ setInterval(Check, 1000)
           
           <Chatview/>
     </div>
-    
+    <Footer/>
     </div>
   );
 }
