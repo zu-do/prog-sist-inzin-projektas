@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import firebase from 'firebase/compat/app';
@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { info, timeStamp } from 'console';
 import {setDoc, doc, getFirestore, Timestamp, getDoc, collection } from 'firebase/firestore'
 
+import {useCollectionData} from 'react-firebase-hooks/firestore'
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -30,6 +31,8 @@ const auth = getAuth();
 const db = getFirestore();
 var displayname = '';
 declare module "*.png";
+
+const firestore = firebase.firestore();
 
 function App() {
   
@@ -217,6 +220,32 @@ setInterval(Check, 1000)
 
 function Chatview(){
   const [user] = useAuthState(auth);
+  const dummy = useRef();
+  const messagesRef = firestore.collection('messages');
+  const query :any = messagesRef.orderBy('createdAt').limit(25);
+
+  const [messages] = useCollectionData(query);
+
+  const [formValue, setFormValue] = useState('');
+  const sendMessage = async (e :any) => {
+    e.preventDefault();
+
+   // const { uid, photoURL } = auth.currentUser;
+    const uid = auth.currentUser?.uid
+    const photoURL = auth.currentUser?.photoURL
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
+    })
+
+    setFormValue('');
+    // if (dummy !== null && dummy !== undefined){
+    // dummy.current.scrollIntoView({ behavior: 'smooth' });
+    // }
+    console.log(messagesRef)
+  }
 
   return (
     <div id='ChatviewContainer'>
@@ -232,6 +261,13 @@ function Chatview(){
           <div className="middle"></div>
           <div className="bottom-bar">
             <div className="chat">
+            <main>
+
+            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+
+            {/* <span ref={dummy}></span> */}
+
+            </main>
               <input type="text" placeholder="Type a message..." />
               <button className="send" type="submit">Send</button>
             </div>
@@ -240,6 +276,19 @@ function Chatview(){
       </div>
     </div>
   );
+}
+function ChatMessage(props : any) {
+  const { text, uid, photoURL } = props.message;
+  let messageClass ="";
+  if (auth.currentUser!==null){
+   messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+  }
+  return (<>
+    <div className={`message ${messageClass}`}>
+     { /*<img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} /> */}
+      <p>{text}</p>
+    </div>
+  </>)
 }
 
 function SignIn() {
