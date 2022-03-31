@@ -3,22 +3,18 @@ import './App.css';
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import 'firebase/auth';
 import 'firebase/compat/firestore';
 import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import Footer from './components/Footer';
 import logo from "./ChatWeb.png";
-//<<<<<<< HEAD
-
 import { useAuthState } from 'react-firebase-hooks/auth';
-//import { useAuthState } from 'react-firebase-hooks/auth';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { info, timeStamp } from 'console';
 import {setDoc, doc, getFirestore, Timestamp, getDoc, collection } from 'firebase/firestore'
-//>>>>>>> 187d702371b4e71a5166115371a3bf45ac9161c2
 
+import {useCollectionData} from 'react-firebase-hooks/firestore'
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
   authDomain: "chat-web-projektas.firebaseapp.com",
@@ -35,17 +31,12 @@ const auth = getAuth();
 const db = getFirestore();
 var displayname = '';
 declare module "*.png";
-//const auth = firebase.auth();
-const firestore = firebase.firestore();
-const analytics = firebase.analytics();
-//const db = getFirestore();
-var displayname = '';
 
+const firestore = firebase.firestore();
 
 function App() {
-//
-  const [user] = useAuthState(auth);  
-//
+  
+  
   function Check (){
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
@@ -226,12 +217,36 @@ setInterval(Check, 1000)
     </div>
   );
 }
-  
+
 function Chatview(){
-//<<<<<<< HEAD
-//
   const [user] = useAuthState(auth);
-//
+  const dummy = useRef();
+  const messagesRef = firestore.collection('messages');
+  const query :any = messagesRef.orderBy('createdAt').limit(25);
+
+  const [messages] = useCollectionData(query);
+
+  const [formValue, setFormValue] = useState('');
+  const sendMessage = async (e :any) => {
+    e.preventDefault();
+
+   // const { uid, photoURL } = auth.currentUser;
+    const uid = auth.currentUser?.uid
+    const photoURL = auth.currentUser?.photoURL
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
+    })
+
+    setFormValue('');
+    // if (dummy !== null && dummy !== undefined){
+    // dummy.current.scrollIntoView({ behavior: 'smooth' });
+    // }
+    console.log(messagesRef)
+  }
+
   return (
     <div id='ChatviewContainer'>
       <div className='container'>  
@@ -246,6 +261,13 @@ function Chatview(){
           <div className="middle"></div>
           <div className="bottom-bar">
             <div className="chat">
+            <main>
+
+            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+
+            {/* <span ref={dummy}></span> */}
+
+            </main>
               <input type="text" placeholder="Type a message..." />
               <button className="send" type="submit">Send</button>
             </div>
@@ -254,6 +276,19 @@ function Chatview(){
       </div>
     </div>
   );
+}
+function ChatMessage(props : any) {
+  const { text, uid, photoURL } = props.message;
+  let messageClass ="";
+  if (auth.currentUser!==null){
+   messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+  }
+  return (<>
+    <div className={`message ${messageClass}`}>
+     { /*<img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} /> */}
+      <p>{text}</p>
+    </div>
+  </>)
 }
 
 function SignIn() {
