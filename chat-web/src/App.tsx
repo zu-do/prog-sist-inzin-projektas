@@ -9,18 +9,15 @@ import { getAuth, onAuthStateChanged, signInWithPopup , signOut} from "firebase/
 import { GoogleAuthProvider } from "firebase/auth";
 import Footer from './components/Footer';
 import logo from "./ChatWeb.png";
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { DocumentDataHook, useCollectionData, useDocumentData } from 'react-firebase-hooks/firestore';
-import { FirestoreError } from 'firebase/firestore';
-=======
-import { useAuthState } from 'react-firebase-hooks/auth';
+//import { useAuthState } from 'react-firebase-hooks/auth';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { info, timeStamp } from 'console';
 import {setDoc, doc, getFirestore, Timestamp, getDoc, collection } from 'firebase/firestore'
->>>>>>> 187d702371b4e71a5166115371a3bf45ac9161c2
+//>>>>>>> 187d702371b4e71a5166115371a3bf45ac9161c2
 
 firebase.initializeApp({
   apiKey: "AIzaSyCa9bz6v8yGfJHHktwx0hGvzf_NqOy6QY8",
@@ -46,14 +43,9 @@ var displayname = '';
 
 
 function App() {
-<<<<<<< HEAD
-
-  const [user] = useAuthState(auth);
-
-=======
-  
-  
->>>>>>> 187d702371b4e71a5166115371a3bf45ac9161c2
+//
+  const [user] = useAuthState(auth);  
+//
   function Check (){
     const head = document.getElementById('head'); 
     const siSec = document.getElementById('signInSection'); 
@@ -236,17 +228,10 @@ setInterval(Check, 1000)
 }
   
 function Chatview(){
-<<<<<<< HEAD
-  
-
-
-
-  
-  
-=======
+//<<<<<<< HEAD
+//
   const [user] = useAuthState(auth);
-
->>>>>>> 187d702371b4e71a5166115371a3bf45ac9161c2
+//
   return (
     <div id='ChatviewContainer'>
       <div className='container'>  
