@@ -220,9 +220,9 @@ setInterval(Check, 1000)
 
 function Chatview(){
   const [user] = useAuthState(auth);
-  const dummy = useRef();
+  const dummy : any = useRef();
   const messagesRef = firestore.collection('messages');
-  const query :any = messagesRef.orderBy('createdAt').limit(25);
+  const query :any = messagesRef.orderBy('createdAt').limit(50);
 
   const [messages] = useCollectionData(query);
 
@@ -242,7 +242,7 @@ function Chatview(){
 
     setFormValue('');
     // if (dummy !== null && dummy !== undefined){
-    // dummy.current.scrollIntoView({ behavior: 'smooth' });
+     dummy.current.scrollIntoView({ behavior: 'smooth' });
     // }
     console.log(messagesRef)
   }
@@ -258,23 +258,30 @@ function Chatview(){
               <div className="dots"></div>
             </div>
           </div>
-          <div className="middle"></div>
+          <div className="middle">
           <div className="bottom-bar">
             <div className="chat">
             <main>
 
-            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
 
-            {/* <span ref={dummy}></span> */}
+           <span ref={dummy}></span> 
 
-            </main>
-              <input type="text" placeholder="Type a message..." />
-              <button className="send" type="submit">Send</button>
+          </main>
+            <form onSubmit={sendMessage}>
+
+            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+
+            <button type="submit" disabled={!formValue}>🕊️</button>
+
+            </form>
             </div>
           </div> 
         </div>
+        </div>
       </div>
     </div>
+        
   );
 }
 function ChatMessage(props : any) {
