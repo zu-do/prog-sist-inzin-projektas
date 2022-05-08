@@ -1,3 +1,18 @@
+body{
+  box-sizing: border-box;
+  min-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+p{
+  margin: 0px;
+  padding: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
 /* utilities */
 
 .bolt {
@@ -152,13 +167,38 @@ li:hover{
   height: 100%;
 }
 .container {
-  width: 40%;
-  height: 50%;
+  width: 50%;
+  height: 65%;
 }
 .chatbox {
-  height: 300px;
+   height: 100%;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba(#777777, 0.5);
+}
+
+.chat{
+  height: 100%;
+  overflow-y: scroll
+}
+.sendButton, .messageInput{
+  display: inline;
+  padding: 0px;
+  margin: 0px;
+  border-width: 0px;
+  height: 50px;
+}
+.messageInput{
+  width: 90%;
+
+}
+.sendButton{
+  width: 10%;
+  border-radius: 5px;
+  
+}
+
+.input{
+  /* width: 500px; */
 }
 .top-bar {
   height: 3rem;
@@ -168,11 +208,14 @@ li:hover{
   background:  #eff1f7;
   border-radius: 10px 10px 0 0;
 }
-.avatar {
+.sendForm{
+  height: 20%;
+}
+.avatarPhoto {
   width: 30px;
   height: 30px;
   
-  background: linear-gradient(to bottom left, #79C7C5 20%, #A1E2D9 100%);
+  
   border-radius: 50%;
 }
 .name {
@@ -212,7 +255,7 @@ li:hover{
   background:  #F9FBFF;
   width: 100%;
   opacity: 0.85;
-  height: 80%;
+  height: 91%;
 }
 .bottom-bar {
   width: 100%;
@@ -220,7 +263,7 @@ li:hover{
   background:  #F9FBFF;
   border-radius: 0 0 10px 10px;
 }
-input {
+/* input {
   padding: 7px;
   width: 88%;
   left: 5%;
@@ -228,7 +271,7 @@ input {
   top: 13px;
   background: #F9FBFF;
   color: #79C7C5;
-}
+} */
 .send {
   border: 0;
   font-size: 1em;
@@ -243,6 +286,61 @@ input {
     transition: all .3s ease-in-out;
     color: lightseagreen;
   }
+.userName{
+font-size: 15px;
+font-weight: bold;
+}
+.userSent{
+  color: #4161d3;
+  text-align: right;
+  margin-right: auto;
+ display: block;
+ margin-right: 5px;
+}
+.userReceived{
+  color: #2cd765;
+  margin-left: 5px;
+}
+
+.message{
+ 
+  background-color: #d9e7f3;
+  display: flex;
+
+  margin: 5px;
+  min-height: 50px;
+  height: auto;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 100%;
+  padding: 5px;
+}
+.messagePhoto{
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+ 
+}
+.messageTextContainer{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: fit-content;
+}
+.sent {
+  flex-direction: row-reverse;
+}
+.messageText{
+ font-size: 15px;
+ margin-left: 5px;
+ margin-right: 5px;
+
+}
+.messagePhoto, .messageText{
+
+
+}
 
 @keyframes App-logo-spin {
   from {
@@ -334,6 +432,7 @@ input {
     
   }
   .footerLink:hover{
+
     transform:scale(1.1);
     color: whitesmoke;
   }

@@ -24,7 +24,7 @@ firebase.initializeApp({
   appId: "1:966943128507:web:82eac40edf4b396bf3a29e"
 })
 
-
+const riccardo = 'data:image/jpeg;base64,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';
 const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
@@ -220,13 +220,24 @@ setInterval(Check, 1000)
 
 function Chatview(){
   const [user] = useAuthState(auth);
-  const dummy = useRef();
+  const dummy : any = useRef();
   const messagesRef = firestore.collection('messages');
-  const query :any = messagesRef.orderBy('createdAt').limit(25);
+  const query :any = messagesRef.orderBy('createdAt').limit(500);
 
   const [messages] = useCollectionData(query);
 
   const [formValue, setFormValue] = useState('');
+  const scroll = () =>{
+    dummy.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+     }
+   // }
+  
+   useEffect(()=>{
+    scroll();
+
+   })
+
+
   const sendMessage = async (e :any) => {
     e.preventDefault();
 
@@ -242,9 +253,7 @@ function Chatview(){
 
     setFormValue('');
     // if (dummy !== null && dummy !== undefined){
-    // dummy.current.scrollIntoView({ behavior: 'smooth' });
-    // }
-    console.log(messagesRef)
+   
   }
 
   return (
@@ -252,42 +261,60 @@ function Chatview(){
       <div className='container'>  
         <div className="chatbox">
           <div className="top-bar">
-            <div className="avatar"></div>
+          <img  className="avatarPhoto" src={auth.currentUser?.photoURL || riccardo} /> 
             <div className="name">{user?.displayName ? user?.displayName : displayname}</div>
             <div className="menu"> 
               <div className="dots"></div>
             </div>
           </div>
-          <div className="middle"></div>
-          <div className="bottom-bar">
+
+          <div className="middle">
+            
+          {/* <div className="bottom-bar"> */}
             <div className="chat">
             <main>
 
-            {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+          {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+          <span ref={dummy}></span> 
 
-            {/* <span ref={dummy}></span> */}
+       
 
-            </main>
-              <input type="text" placeholder="Type a message..." />
-              <button className="send" type="submit">Send</button>
+          </main>
             </div>
-          </div> 
+          {/* </div>  */}
         </div>
+        </div>
+        <form className='sendForm' onSubmit={sendMessage}>
+<span className='input'>
+<input className='messageInput' value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+
+<button className='sendButton' type="submit" disabled={!formValue}>🕊️</button>
+</span>
+</form>
       </div>
+      
     </div>
+        
   );
 }
 function ChatMessage(props : any) {
   const { text, uid, photoURL } = props.message;
   let messageClass ="";
+  let userClass ="";
   if (auth.currentUser!==null){
    messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+   userClass = uid === auth.currentUser.uid ? 'userSent' : 'userReceived';
   }
   return (<>
-    <div className={`message ${messageClass}`}>
-     { /*<img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} /> */}
-      <p>{text}</p>
+   <span className={`userName ${userClass}`}>{auth.currentUser?.displayName}</span>
+ <div className={`message ${messageClass}`}>
+    <img  className="messagePhoto" src={photoURL || riccardo} /> 
+    <div className='messageTextContainer'>
+      <p className='messageText'>{text}</p>
+      </div>
+     
     </div>
+  
   </>)
 }
 
