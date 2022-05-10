@@ -16,7 +16,7 @@ export default function ExitPage(){
                     WE HOPE TO SEE YOU SOON
                     <div id="slide1">
                     <br></br>
-                    <Link to="/"><button className="backtToMainButton">MAIN PAGE</button></Link>
+                    <Link to="/"><button title= "backToMain" className="backtToMainButton">MAIN PAGE</button></Link>
                     </div>
                 </div>
                     
