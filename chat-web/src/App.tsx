@@ -244,11 +244,14 @@ function Chatview(){
    // const { uid, photoURL } = auth.currentUser;
     const uid = auth.currentUser?.uid
     const photoURL = auth.currentUser?.photoURL
+    const name = auth.currentUser?.displayName;
+    
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
+      photoURL,
+      name
     })
 
     setFormValue('');
@@ -298,7 +301,8 @@ function Chatview(){
   );
 }
 function ChatMessage(props : any) {
-  const { text, uid, photoURL } = props.message;
+  const { text, uid, photoURL, name } = props.message;
+ 
   let messageClass ="";
   let userClass ="";
   if (auth.currentUser!==null){
@@ -306,7 +310,7 @@ function ChatMessage(props : any) {
    userClass = uid === auth.currentUser.uid ? 'userSent' : 'userReceived';
   }
   return (<>
-   <span className={`userName ${userClass}`}>{auth.currentUser?.displayName}</span>
+   <span className={`userName ${userClass}`}>{name}</span>
  <div className={`message ${messageClass}`}>
     <img  className="messagePhoto" src={photoURL || riccardo} /> 
     <div className='messageTextContainer'>
